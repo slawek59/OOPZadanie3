@@ -18,11 +18,19 @@ public class Customer {
         System.out.println(orderItem.getProductName() + " added to the cart.");
     }
 
-    public void createOrder(){
-        for (OrderItem orderItem : listOfOrderItems){
-            listOfOrders
-        }
-
-        System.out.println("Order created.");
+    public void createOrder() {
+        Order order = new Order(listOfOrderItems);
+        listOfOrders.add(order);
+        listOfOrderItems.clear();
+        System.out.println("Order created. Total: " + order.calculateTotalPrice() + " zł");
     }
+
+    public void printOrderHistory() {
+        System.out.println("Order history for " + name + ":");
+        for (Order order : listOfOrders) {
+            System.out.println("Status: " + order.getStatus() + ", Total: " + order.calculateTotalPrice() + " zł");
+        }
+    }
+
+
 }
